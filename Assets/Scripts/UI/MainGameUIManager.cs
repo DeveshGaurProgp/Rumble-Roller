@@ -5,39 +5,37 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-    private Animation anim;
+    private Animator anim;
     public Button pause;
 
     void Start()
     {
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
     }
 
     public void PauseGame()
     {
+        anim.SetBool("Paused", true);
         pause.gameObject.SetActive(false);
-        anim.Play("MainUI");
+        Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
-        anim.Play("MainUIReverse");
-        StartCoroutine(SetActive());
+        anim.SetBool("Paused" , false);
+        Time.timeScale = 1f;
+        pause.gameObject.SetActive(true);
     }
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
-    }
-
-    IEnumerator SetActive()
-    {
-        yield return new WaitForSeconds(0.2f);
-        pause.gameObject.SetActive(true);
     }
 }

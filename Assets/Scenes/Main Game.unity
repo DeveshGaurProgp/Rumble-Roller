@@ -1069,8 +1069,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203180272}
-  - component: {fileID: 1203180274}
   - component: {fileID: 1203180273}
+  - component: {fileID: 1203180275}
   m_Layer: 5
   m_Name: Ui
   m_TagString: Untagged
@@ -1114,24 +1114,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 561004403}
---- !u!111 &1203180274
-Animation:
+--- !u!95 &1203180275
+Animator:
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203180271}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 25950923050346840ac5155bb5944d1c, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 25950923050346840ac5155bb5944d1c, type: 2}
-  - {fileID: 7400000, guid: f1cc3ab5d44aa424bb1256d8f67c3006, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 1
-  m_UpdateMode: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33cfdc6f18f2a7f47997e9c15fe40a3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1211016355
 GameObject:
   m_ObjectHideFlags: 0
