@@ -7,14 +7,31 @@ public class MainGameUIManager : MonoBehaviour
 {
     private Animator animMenu;
     public Button pause;
+    public Button Resume;
+
+    private bool oneTime = true;
+
+    private PlayerController playerControllerScript;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        animMenu = GetComponent<Animator>();
 
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        animMenu = GetComponent<Animator>();
         animMenu.SetBool("GameStart", true);
+
         StartCoroutine(GameStarting());
+    }
+
+    void Update()
+    {
+        if(playerControllerScript.gameOver == true && oneTime)
+        {
+            StartCoroutine(GameOver());
+            oneTime = false;
+        }
     }
 
     public void PauseGame()
@@ -47,7 +64,15 @@ public class MainGameUIManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(4);
-        Time.timeScale = 1f;
         animMenu.SetBool("GameStart", false);
+        Time.timeScale = 1f;
+    }
+
+    IEnumerator GameOver()
+    {
+        pause.gameObject.SetActive(false);
+        animMenu.SetBool("Paused", true);
+        Destroy(Resume.gameObject);
+        yield return null;
     }
 }

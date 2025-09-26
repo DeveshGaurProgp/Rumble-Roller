@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 561004403}
+  Resume: {fileID: 2106580808}
 --- !u!95 &1203180275
 Animator:
   serializedVersion: 7
