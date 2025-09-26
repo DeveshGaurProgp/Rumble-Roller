@@ -44,13 +44,13 @@ public class Enemy : MonoBehaviour
         {
             Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 hitPlayer = collision.gameObject.transform.position - transform.position;
-            playerRb.AddForce(hitPlayer * forceStrength);
+            playerRb.AddForce(hitPlayer * forceStrength * Time.timeScale);
         }
     }
 
     void EnemyBehavior()
     {
         Vector3 playerDirection = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(playerDirection * speed);
+        enemyRb.AddForce(playerDirection * speed * Time.timeScale);
     }
 }

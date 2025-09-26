@@ -5,24 +5,28 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-    private Animator anim;
+    private Animator animMenu;
     public Button pause;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        Cursor.lockState = CursorLockMode.None;
+        animMenu = GetComponent<Animator>();
+
+        animMenu.SetBool("GameStart", true);
+        StartCoroutine(GameStarting());
     }
 
     public void PauseGame()
     {
-        anim.SetBool("Paused", true);
+        animMenu.SetBool("Paused", true);
         pause.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
-        anim.SetBool("Paused" , false);
+        animMenu.SetBool("Paused" , false);
         Time.timeScale = 1f;
         pause.gameObject.SetActive(true);
     }
@@ -37,5 +41,13 @@ public class MainGameUIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    IEnumerator GameStarting()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(4);
+        Time.timeScale = 1f;
+        animMenu.SetBool("GameStart", false);
     }
 }

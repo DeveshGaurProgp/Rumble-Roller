@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         playerRb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
         focalPoint = GameObject.Find("Focal Point");
