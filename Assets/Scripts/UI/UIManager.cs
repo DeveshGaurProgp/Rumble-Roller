@@ -6,28 +6,38 @@ public class UIManager : MonoBehaviour
 {
     public Button backButton;
 
-    private Animation anim;
+    private Animator menuAnim;
 
     void Start()
     {
-        anim = GetComponent<Animation> ();
+        menuAnim = GetComponent<Animator>();
     }
 
-    public void StartGame()
+    public void Play()
     {
-        SceneManager.LoadScene(1);
+        menuAnim.SetBool("SettingDifficulty", true);
+        menuAnim.SetBool("BackToMenu", false);
+        backButton.gameObject.SetActive(true);
     }
 
     public void Options()
     {
+        menuAnim.SetBool("Settings", true);
+        menuAnim.SetBool("BackToMenu", false);
         backButton.gameObject.SetActive(true);
-        anim.Play("OptionSlider");
     }
 
     public void Back()
     {
+        menuAnim.SetBool("SettingDifficulty", false);
+        menuAnim.SetBool("BackToMenu", true);
+        menuAnim.SetBool("Settings", false);
         backButton.gameObject.SetActive(false);
-        anim.Play("ReverseOptionSilder");
+    }
+
+    public void StartLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()
